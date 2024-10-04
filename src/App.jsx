@@ -1,35 +1,51 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState, useEffect, createContext } from "react";
+import "./App.css";
+import HeaderComponent from "./Components/HeaderComponent";
+import LeftMenueComponent from "./Components/LeftMenueComponent";
+import HomeComponent from "./Components/HomeComponent";
+
+const PostContext = createContext();
+const ContactContext = createContext();
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [posts, setPosts] = useState([]);
+  const [contacts, setContacts] = useState([]);
+
+  const ContactsURL =
+    "https://boolean-uk-api-server.fly.dev/victorscodeingcorner/contact";
+  const PostURL =
+    "https://boolean-uk-api-server.fly.dev/victorscodeingcorner/post";
+
+  const fetchPosts = async () => {
+    const response = await fetch(PostURL);
+    const jsonData = await response.json();
+    console.log(jsonData);
+    setPosts(jsonData);
+  };
+
+  const fetchContacts = async () => {
+    const response = await fetch(ContactsURL);
+    const jsonData = await response.json();
+    console.log(jsonData);
+    setContacts(jsonData);
+  };
+
+  useEffect(() => {
+    fetchPosts();
+    fetchContacts();
+  }, []);
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <PostContext.Provider value={{ posts, setPosts }}>
+      <ContactContext.Provider value={{ contacts, setContacts }}>
+        <div className="app-layout">
+          <HeaderComponent />
+          <LeftMenueComponent />
+          <HomeComponent />
+        </div>
+      </ContactContext.Provider>
+    </PostContext.Provider>
+  );
 }
 
-export default App
+export { App, PostContext, ContactContext };
