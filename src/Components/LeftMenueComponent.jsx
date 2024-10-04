@@ -1,21 +1,22 @@
-import HomeComponent from "./HomeComponent";
-import ProfileComponent from "./ProfileComponent";
+import React from "react";
+import { Link } from "react-router-dom";
 import HomeIcon from "../assets/HomeLogo.svg";
 import ProfileIcon from "../assets/ProfileLogo.svg";
 
 export default function LeftMenueComponent() {
   return (
     <div className="leftmenu-layout">
-      <p> LeftMenu will go here</p>
       <button>
-      <img src={HomeIcon} alt="Home" />
-        Home
-        <HomeComponent />
+        <Link to="/">
+          <img src={HomeIcon} alt="Home" />
+          Home
+        </Link>
       </button>
       <button>
-      <img src={ProfileIcon} alt="Profile" />
-        Profile
-        <ProfileComponent />
+        <Link to="/profile">
+          <img src={ProfileIcon} alt="Profile" />
+          Profile
+        </Link>
       </button>
     </div>
   );

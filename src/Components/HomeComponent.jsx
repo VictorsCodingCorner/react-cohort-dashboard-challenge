@@ -1,10 +1,11 @@
 import React from "react";
-import PostComponent from './PostComponents/PostComponent'
+import PostComponent from './PostComponents/PostComponent';
+import CreatePostComponent from './PostComponents/CreatePostComponent'; 
 
-export default function HomeComponent () {
+export default function HomeComponent() {
   return (
     <main className="main-content">
-      <p>Main page will go here</p>
+      <CreatePostComponent />
       <PostComponent />
     </main>
   );

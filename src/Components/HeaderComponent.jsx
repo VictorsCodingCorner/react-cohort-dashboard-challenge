@@ -1,10 +1,15 @@
-import HeaderLogo from "../assets/HeaderLogo.svg";
+import React from "react";
 
 export default function HeaderComponent() {
   return (
     <header>
-      <img src={HeaderLogo} alt="Logo" />
-      <h1>My App</h1>
+      <div>
+        <h1>My App</h1>
+      </div>
+      <div>
+        <button>Profile</button>
+      </div>
     </header>
   );
 }
+
