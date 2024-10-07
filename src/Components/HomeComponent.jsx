@@ -1,4 +1,3 @@
-import React from "react";
 import PostComponent from './PostComponents/PostComponent';
 import CreatePostComponent from './PostComponents/CreatePostComponent'; 
 

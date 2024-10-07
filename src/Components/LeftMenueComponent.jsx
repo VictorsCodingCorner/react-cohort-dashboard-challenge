@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import HomeIcon from "../assets/HomeLogo.svg";
 import ProfileIcon from "../assets/ProfileLogo.svg";

@@ -21,7 +21,7 @@ export default function CommentPostComponent({ postId }) {
 
   useEffect(() => {
     fetchComments();
-  }, [postId]);
+  });
 
   const getAuthorDetails = (contactId) => {
     return contacts.find((contact) => contact.id === contactId);
@@ -31,6 +31,7 @@ export default function CommentPostComponent({ postId }) {
     e.preventDefault();
 
     const newComment = {
+      postId,
       contactId: 1, 
       content: newCommentContent,
     };

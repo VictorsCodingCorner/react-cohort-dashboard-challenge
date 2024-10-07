@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { PostContext, ContactContext } from "../../App";
 import CommentPostComponent from "./CommentPostComponent";
 
@@ -44,7 +44,6 @@ export default function PostComponent() {
             <p>{post.content}</p>
             <CommentPostComponent
               postId={post.id}
-              comments={post.comments || []}
             />
           </div>
         );
